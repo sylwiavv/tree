@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import Sidebar from './components/Sidebar';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -19,7 +20,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} antialiased`}>{children}</body>
+      <body
+        className={`${montserrat.variable} bg-lightOlive antialiased flex w-screen h-screen justify-center items-center `}
+      >
+        <div className="flex gap-6 w-5/6 h-5/6">
+          <Sidebar />
+
+          <main className="flex-1 p-6 bg-olive rounded-xl ">
+            <div className="p-8 bg-beige rounded-xl shadow-md  ">
+              {children}
+            </div>
+          </main>
+        </div>
+      </body>
     </html>
   );
 }
